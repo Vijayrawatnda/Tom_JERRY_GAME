@@ -3,8 +3,7 @@ body {
     text-align: center;
     background: url("./tom-and-jerry.jpg");
     background-size: cover;
-    margin: 0;
-    padding:0;
+   
 }
 #board {
     width: 540px;
