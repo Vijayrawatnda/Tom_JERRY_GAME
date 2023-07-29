@@ -1,5 +1,5 @@
-let currMoleTile;
-let currPlantTile;
+let currjerryTile;
+let currtomTile;
 let score = 0;
 let gameOver = false;
 
@@ -15,8 +15,8 @@ function setGame() {
         tile.addEventListener("click", selectTile);
         document.getElementById("board").appendChild(tile);
     }
-    setInterval(setMole, 1000); 
-    setInterval(setPlant, 2000); 
+    setInterval(setjerry, 1000); 
+    setInterval(settom, 2000); 
 }
 
 function getRandomTile() {
@@ -25,51 +25,51 @@ function getRandomTile() {
     return num.toString();
 }
 
-function setMole() {
+function setjerry() {
     if (gameOver) {
         return;
     }
-    if (currMoleTile) {
-        currMoleTile.innerHTML = "";
+    if (currjerryTile) {
+        currjerryTile.innerHTML = "";
     }
-    let mole = document.createElement("img");
-    mole.src = "./jerry.png";
+    let jerry = document.createElement("img");
+    jerry.src = "./jerry.png";
 
     let num = getRandomTile();
-    if (currPlantTile && currPlantTile.id == num) {
+    if (currtomTile && currtomTile.id == num) {
         return;
     }
-    currMoleTile = document.getElementById(num);
-    currMoleTile.appendChild(mole);
+    currjerryTile = document.getElementById(num);
+    currjerryTile.appendChild(jerry);
 }
 
-function setPlant() {
+function settom() {
     if (gameOver) {
         return;
     }
-    if (currPlantTile) {
-        currPlantTile.innerHTML = "";
+    if (currtomTile) {
+        currtomTile.innerHTML = "";
     }
-    let plant = document.createElement("img");
-    plant.src = "./tom-remove.png";
+    let tom = document.createElement("img");
+    tom.src = "./tom-remove.png";
 
     let num = getRandomTile();
-    if (currMoleTile && currMoleTile.id == num) {
+    if (currjerryTile && currjerryTile.id == num) {
         return;
     }
-    currPlantTile = document.getElementById(num);
-    currPlantTile.appendChild(plant);
+    currtomTile = document.getElementById(num);
+    currtomTile.appendChild(tom);
 }
 
 function selectTile() {
     if (gameOver) {
         return;
     }
-    if (this == currMoleTile) {
+    if (this == currjerryTile) {
         score += 10;
         document.getElementById("score").innerText = score.toString(); //update score html
     }
-    else if (this == currPlantTile) {
+    else if (this == currtomTile) {
         document.getElementById("score").innerText = "GAME OVER: " + score.toString(); //update score html
         gameOver = true;
     }
